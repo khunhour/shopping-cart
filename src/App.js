@@ -3,13 +3,13 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 
 const allItemsContext = React.createContext(null);
-
+const eventListenerContext = React.createContext(null);
 export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
 	const [wishList, setWishList] = useState({});
 	const [cartItems, setCartItems] = useState({});
-	const allItems = Object.assign({}, menItems, womenItems);
+
 	// fetch data on mount
 	useEffect(() => {
 		fetchMenItems();
@@ -50,19 +50,24 @@ export default function App() {
 		setWomenItems(formattedData);
 	};
 
+	const allItems = { menItems, womenItems };
+	const allEventListener = { addToCart, addToWishList };
+	console.group(allEventListener);
 	return (
 		// add eventlistener context
-		<allItemsContext.Provider value={allItems}>
-			<div>
-				<h1>App</h1>
-				<Header />
-				<Main
-					menItems={menItems}
-					womenItems={womenItems}
-					addToCart={addToCart}
-					addToWishList={addToWishList}
-				/>
-			</div>
+		<allItemsContext.Provider value={allEventListener}>
+			<allItemsContext.Provider value={allItems}>
+				<div>
+					<h1>App</h1>
+					<Header />
+					<Main
+						menItems={menItems}
+						womenItems={womenItems}
+						addToCart={addToCart}
+						addToWishList={addToWishList}
+					/>
+				</div>
+			</allItemsContext.Provider>
 		</allItemsContext.Provider>
 	);
 }
