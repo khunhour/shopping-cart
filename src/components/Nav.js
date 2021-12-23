@@ -2,9 +2,14 @@ import React from "react";
 
 export default function Nav() {
 	return (
-		<div>
+		<nav>
 			Nav
-			<li>Hello</li>
-		</div>
+			<ul>
+				<li>HOME</li>
+				<li>MEN</li>
+				<li>WOMEN</li>
+				<li>ABOUT</li>
+			</ul>
+		</nav>
 	);
 }
