@@ -2,27 +2,34 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
+const allItemsContext = React.createContext(null);
+
 export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
 	const [wishList, setWishList] = useState({});
 	const [cartItems, setCartItems] = useState({});
-
+	const allItems = Object.assign({}, menItems, womenItems);
 	// fetch data on mount
 	useEffect(() => {
 		fetchMenItems();
 		fetchWomenItems();
 	}, []);
 
-	const addToWishList = (e, id) => {
-		const allItems = menItems.concat(womenItems);
-		const targetItem = allItems.filter((item) => item.id === id);
+	const addToWishList = (e) => {
+		const allItemsArray = menItems.concat(womenItems);
+		const targetItem = allItemsArray.filter(
+			(item) => item.id === e.target.id
+		);
 		setWishList(...wishList, targetItem);
 	};
 
-	const addToCart = (e, id) => {
-		const allItems = menItems.concat(womenItems);
-		const targetItem = allItems.filter((item) => item.id === id);
+	const addToCart = (e) => {
+		// add quantity
+		const allItemsArray = menItems.concat(womenItems);
+		const targetItem = allItemsArray.filter(
+			(item) => item.id === e.target.id
+		);
 		setCartItems(...cartItems, targetItem);
 	};
 
@@ -44,10 +51,18 @@ export default function App() {
 	};
 
 	return (
-		<div>
-			<h1>App</h1>
-			<Header />
-			<Main menItems={menItems} womenItems={womenItems} />
-		</div>
+		// add eventlistener context
+		<allItemsContext.Provider value={allItems}>
+			<div>
+				<h1>App</h1>
+				<Header />
+				<Main
+					menItems={menItems}
+					womenItems={womenItems}
+					addToCart={addToCart}
+					addToWishList={addToWishList}
+				/>
+			</div>
+		</allItemsContext.Provider>
 	);
 }
