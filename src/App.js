@@ -6,7 +6,7 @@ export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
 	const [wishList, setWishList] = useState({});
-	const [cart, setCard] = useState({});
+	const [cartItems, setCartItems] = useState({});
 
 	// fetch data on mount
 	useEffect(() => {
@@ -14,11 +14,24 @@ export default function App() {
 		fetchWomenItems();
 	}, []);
 
+	const addToWishList = (e, id) => {
+		const allItems = menItems.concat(womenItems);
+		const targetItem = allItems.filter((item) => item.id === id);
+		setWishList(...wishList, targetItem);
+	};
+
+	const addToCart = (e, id) => {
+		const allItems = menItems.concat(womenItems);
+		const targetItem = allItems.filter((item) => item.id === id);
+		setCartItems(...cartItems, targetItem);
+	};
+
 	const fetchMenItems = async () => {
 		const data = await fetch(
 			"https://fakestoreapi.com/products/category/men's%20clothing"
 		);
 		const formattedData = await data.json();
+		console.log(formattedData);
 		setMenItems(formattedData);
 	};
 
