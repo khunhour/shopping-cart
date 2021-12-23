@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function Card() {
+export default function Card({ item }) {
 	return (
 		<div>
-			<img src="" alt="product" />
-			<div>Name</div>
-			<div>Price</div>
+			<img src={item.image} alt="product" />
+			<div>{item.title}</div>
+			<div>{item.price}$</div>
 			<button>Add to Cart</button>
 		</div>
 	);
