@@ -3,13 +3,13 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 
 export const allItemsContext = React.createContext(null);
-export const eventListenerContext = React.createContext(null);
 
 export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
 	const [wishList, setWishList] = useState({});
 	const [cartItems, setCartItems] = useState({});
+	const allItems = { menItems, womenItems };
 
 	// fetch data on mount
 	useEffect(() => {
@@ -50,21 +50,13 @@ export default function App() {
 		setWomenItems(formattedData);
 	};
 
-	let allItems = { menItems, womenItems };
-	let allEventListener = { addToCart, addToWishList };
-	console.group(allEventListener);
-	console.log(menItems);
-	console.log(allItems);
 	return (
-		// add eventlistener context
-		<allItemsContext.Provider value={allEventListener}>
-			<allItemsContext.Provider value={allItems}>
-				<div>
-					<h1>App</h1>
-					<Header />
-					<Main />
-				</div>
-			</allItemsContext.Provider>
+		<allItemsContext.Provider value={allItems}>
+			<div>
+				<h1>App</h1>
+				<Header />
+				<Main addToCart={addToCart} addToWishList={addToWishList} />
+			</div>
 		</allItemsContext.Provider>
 	);
 }
