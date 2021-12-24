@@ -3,12 +3,13 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 
 export const allItemsContext = React.createContext(null);
+export const cartItemsContext = React.createContext(null);
 
 export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
 	const [wishList, setWishList] = useState({});
-	const [cartItems, setCartItems] = useState({});
+	const [cartItems, setCartItems] = useState([]);
 	const allItems = { menItems, womenItems };
 
 	// fetch data on mount
@@ -21,17 +22,33 @@ export default function App() {
 		const allItemsArray = menItems.concat(womenItems);
 		const targetItem = allItemsArray.filter(
 			(item) => item.id === e.target.id
-		);
+		)[0];
 		setWishList(...wishList, targetItem);
 	};
 
-	const addToCart = (e) => {
-		// add quantity
+	const addToCart = (e, id) => {
 		const allItemsArray = menItems.concat(womenItems);
-		const targetItem = allItemsArray.filter(
-			(item) => item.id === e.target.id
-		);
-		setCartItems(...cartItems, targetItem);
+		const targetItem = allItemsArray.filter((item) => item.id === id)[0];
+		console.log(targetItem);
+
+		const existingItem = cartItems.filter((item) => item.info.id === id);
+		if (existingItem.length === 0) {
+			const newItem = { info: targetItem, quantity: 1 };
+			console.log(newItem);
+			setCartItems((prevState) => [...prevState, newItem]);
+		} else if (existingItem.length !== 0) {
+			let updatedItems = cartItems.map((item) => {
+				if (item.info.id === id) {
+					return { ...item, quantity: item.quantity + 1 };
+				}
+				return item;
+			});
+			setCartItems(updatedItems);
+		}
+		console.log("-----exist------");
+		console.log(existingItem.length !== 0);
+		console.log(existingItem);
+		console.log(cartItems);
 	};
 
 	const fetchMenItems = async () => {
@@ -52,11 +69,13 @@ export default function App() {
 
 	return (
 		<allItemsContext.Provider value={allItems}>
-			<div>
-				<h1>App</h1>
-				<Header />
-				<Main addToCart={addToCart} addToWishList={addToWishList} />
-			</div>
+			<cartItemsContext.Provider value={cartItems}>
+				<div>
+					<h1>App</h1>
+					<Header />
+					<Main addToCart={addToCart} addToWishList={addToWishList} />
+				</div>
+			</cartItemsContext.Provider>
 		</allItemsContext.Provider>
 	);
 }
