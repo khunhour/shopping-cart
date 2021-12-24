@@ -2,24 +2,11 @@ import React from "react";
 import Men from "./content page/Men";
 import Women from "./content page/Women";
 
-export default function Main({
-	menItems,
-	womenItems,
-	addToCart,
-	addToWishlist,
-}) {
+export default function Main() {
 	return (
 		<div>
-			<Men
-				menItems={menItems}
-				addToCart={addToCart}
-				addToWishlist={addToWishlist}
-			/>
-			<Women
-				womenItems={womenItems}
-				addToCart={addToCart}
-				addToWishlist={addToWishlist}
-			/>
+			<Men />
+			<Women />
 		</div>
 	);
 }

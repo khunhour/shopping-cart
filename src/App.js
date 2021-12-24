@@ -4,6 +4,7 @@ import Main from "./components/Main";
 
 export const allItemsContext = React.createContext(null);
 export const eventListenerContext = React.createContext(null);
+
 export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
@@ -38,7 +39,6 @@ export default function App() {
 			"https://fakestoreapi.com/products/category/men's%20clothing"
 		);
 		const formattedData = await data.json();
-		console.log(formattedData);
 		setMenItems(formattedData);
 	};
 
@@ -50,9 +50,11 @@ export default function App() {
 		setWomenItems(formattedData);
 	};
 
-	const allItems = { menItems, womenItems };
-	const allEventListener = { addToCart, addToWishList };
+	let allItems = { menItems, womenItems };
+	let allEventListener = { addToCart, addToWishList };
 	console.group(allEventListener);
+	console.log(menItems);
+	console.log(allItems);
 	return (
 		// add eventlistener context
 		<allItemsContext.Provider value={allEventListener}>
@@ -60,12 +62,7 @@ export default function App() {
 				<div>
 					<h1>App</h1>
 					<Header />
-					<Main
-						menItems={menItems}
-						womenItems={womenItems}
-						addToCart={addToCart}
-						addToWishList={addToWishList}
-					/>
+					<Main />
 				</div>
 			</allItemsContext.Provider>
 		</allItemsContext.Provider>

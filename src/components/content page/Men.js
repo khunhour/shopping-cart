@@ -4,6 +4,7 @@ import Card from "../Card";
 
 export default function Men() {
 	const menItems = useContext(allItemsContext).menItems;
+	if (!menItems) return;
 	return (
 		<div>
 			{menItems.map((item) => {
