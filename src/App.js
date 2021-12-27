@@ -18,25 +18,30 @@ export default function App() {
 		fetchWomenItems();
 	}, []);
 
-	const addToWishList = (e) => {
+	const toggleWishList = (e, id) => {
 		const allItemsArray = menItems.concat(womenItems);
+		const existingItem = wishList.filter((item) => item.info.id === id);
 		const targetItem = allItemsArray.filter(
 			(item) => item.id === e.target.id
 		)[0];
-		setWishList(...wishList, targetItem);
+		if (existingItem.length === 0) {
+			setWishList(...wishList, targetItem);
+		} else {
+			let updatedItems = wishList.filter((item) => item.info.id !== id);
+			setWishList(updatedItems);
+		}
 	};
 
+	// remove e
 	const addToCart = (e, id) => {
 		const allItemsArray = menItems.concat(womenItems);
 		const targetItem = allItemsArray.filter((item) => item.id === id)[0];
-		console.log(targetItem);
-
 		const existingItem = cartItems.filter((item) => item.info.id === id);
+
 		if (existingItem.length === 0) {
 			const newItem = { info: targetItem, quantity: 1 };
-			console.log(newItem);
 			setCartItems((prevState) => [...prevState, newItem]);
-		} else if (existingItem.length !== 0) {
+		} else {
 			let updatedItems = cartItems.map((item) => {
 				if (item.info.id === id) {
 					return { ...item, quantity: item.quantity + 1 };
@@ -45,10 +50,6 @@ export default function App() {
 			});
 			setCartItems(updatedItems);
 		}
-		console.log("-----exist------");
-		console.log(existingItem.length !== 0);
-		console.log(existingItem);
-		console.log(cartItems);
 	};
 
 	const fetchMenItems = async () => {
@@ -73,7 +74,10 @@ export default function App() {
 				<div>
 					<h1>App</h1>
 					<Header />
-					<Main addToCart={addToCart} addToWishList={addToWishList} />
+					<Main
+						addToCart={addToCart}
+						toggleWishList={toggleWishList}
+					/>
 				</div>
 			</cartItemsContext.Provider>
 		</allItemsContext.Provider>
