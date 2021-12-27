@@ -8,29 +8,57 @@ export const cartItemsContext = React.createContext(null);
 export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
-	const [wishList, setWishList] = useState([]);
+	const [wishlist, setWishlist] = useState([]);
 	const [cartItems, setCartItems] = useState([]);
-	const allItems = { menItems, womenItems };
-
+	const allItems = { menItems, womenItems, wishlist };
 	// fetch data on mount
 	useEffect(() => {
 		fetchMenItems();
 		fetchWomenItems();
 	}, []);
 
-	const toggleWishList = (id) => {
-		const allItemsArray = menItems.concat(womenItems);
-		const existingItem = wishList.filter((item) => item.id === id);
-		const targetItem = allItemsArray.filter((item) => item.id === id)[0];
-		if (existingItem.length === 0) {
-			setWishList((prevState) => [...prevState, targetItem]);
+	useEffect(() => {
+		const menWishlist = menItems.filter((item) => item.inWishlist);
+		const womenWishlist = womenItems.filter((item) => item.inWishlist);
+		const currentWishlist = menWishlist.concat(womenWishlist);
+		setWishlist(currentWishlist);
+	}, [menItems, womenItems]);
+
+	const toggleWishlist = (id, category) => {
+		if (category === "men's clothing") {
+			const updatedItems = menItems.map((item) => {
+				if (item.id === id) {
+					return { ...item, inWishlist: !item.inWishlist };
+				}
+				return item;
+			});
+			setMenItems(updatedItems);
 		} else {
-			let updatedItems = wishList.filter((item) => item.id !== id);
-			setWishList(updatedItems);
+			const updatedItems = womenItems.map((item) => {
+				if (item.id === id) {
+					return { ...item, inWishlist: !item.inWishlist };
+				}
+				return item;
+			});
+			setWomenItems(updatedItems);
 		}
+
+		// const allItemsArray = menItems.concat(womenItems);
+		// const currentWishlist = allItemsArray.filter((item) => item.inWishlist);
+		// setWishList(currentWishlist);
+		// const existingItem = wishList.filter((item) => item.id === id);
+		// // update inWishlist
+
+		// const targetItem = updatedItems.filter((item) => item.id === id)[0];
+		// if (existingItem.length === 0) {
+		// 	setWishList((prevState) => [...prevState, targetItem]);
+		// 	// setWishList([...updatedItems, targetItem]);
+		// } else {
+		// 	let updatedItems = wishList.filter((item) => item.id !== id);
+		// 	setWishList(updatedItems);
+		// }
 	};
 
-	// remove e
 	const addToCart = (id) => {
 		const allItemsArray = menItems.concat(womenItems);
 		const targetItem = allItemsArray.filter((item) => item.id === id)[0];
@@ -55,7 +83,10 @@ export default function App() {
 			"https://fakestoreapi.com/products/category/men's%20clothing"
 		);
 		const formattedData = await data.json();
-		setMenItems(formattedData);
+		const updatedData = formattedData.map((item) => {
+			return { ...item, inWishlist: false };
+		});
+		setMenItems(updatedData);
 	};
 
 	const fetchWomenItems = async () => {
@@ -63,21 +94,19 @@ export default function App() {
 			"https://fakestoreapi.com/products/category/women's%20clothing"
 		);
 		const formattedData = await data.json();
-		setWomenItems(formattedData);
+		const updatedData = formattedData.map((item) => {
+			return { ...item, inWishlist: false };
+		});
+		setWomenItems(updatedData);
 	};
 
 	return (
-		<allItemsContext.Provider value={allItems}>
-			<cartItemsContext.Provider value={cartItems}>
-				<div>
-					<h1>App</h1>
-					<Header />
-					<Main
-						addToCart={addToCart}
-						toggleWishList={toggleWishList}
-					/>
-				</div>
-			</cartItemsContext.Provider>
+		<allItemsContext.Provider value={{ menItems, womenItems, wishlist }}>
+			<div>
+				<h1>App</h1>
+				<Header />
+				<Main addToCart={addToCart} toggleWishlist={toggleWishlist} />
+			</div>
 		</allItemsContext.Provider>
 	);
 }
