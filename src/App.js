@@ -18,7 +18,7 @@ export default function App() {
 		fetchWomenItems();
 	}, []);
 
-	const toggleWishList = (e, id) => {
+	const toggleWishList = (id) => {
 		const allItemsArray = menItems.concat(womenItems);
 		const existingItem = wishList.filter((item) => item.id === id);
 		const targetItem = allItemsArray.filter((item) => item.id === id)[0];
@@ -31,7 +31,7 @@ export default function App() {
 	};
 
 	// remove e
-	const addToCart = (e, id) => {
+	const addToCart = (id) => {
 		const allItemsArray = menItems.concat(womenItems);
 		const targetItem = allItemsArray.filter((item) => item.id === id)[0];
 		const existingItem = cartItems.filter((item) => item.info.id === id);
