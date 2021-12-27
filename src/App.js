@@ -8,7 +8,7 @@ export const cartItemsContext = React.createContext(null);
 export default function App() {
 	const [menItems, setMenItems] = useState([]);
 	const [womenItems, setWomenItems] = useState([]);
-	const [wishList, setWishList] = useState({});
+	const [wishList, setWishList] = useState([]);
 	const [cartItems, setCartItems] = useState([]);
 	const allItems = { menItems, womenItems };
 
@@ -20,14 +20,12 @@ export default function App() {
 
 	const toggleWishList = (e, id) => {
 		const allItemsArray = menItems.concat(womenItems);
-		const existingItem = wishList.filter((item) => item.info.id === id);
-		const targetItem = allItemsArray.filter(
-			(item) => item.id === e.target.id
-		)[0];
+		const existingItem = wishList.filter((item) => item.id === id);
+		const targetItem = allItemsArray.filter((item) => item.id === id)[0];
 		if (existingItem.length === 0) {
-			setWishList(...wishList, targetItem);
+			setWishList((prevState) => [...prevState, targetItem]);
 		} else {
-			let updatedItems = wishList.filter((item) => item.info.id !== id);
+			let updatedItems = wishList.filter((item) => item.id !== id);
 			setWishList(updatedItems);
 		}
 	};

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { allItemsContext } from "../../App";
 import Card from "../Card";
 
-export default function Men({ addToCart, addToWishList }) {
+export default function Men({ addToCart, toggleWishList }) {
 	const menItems = useContext(allItemsContext).menItems;
 	if (!menItems) return;
 	return (
@@ -13,7 +13,7 @@ export default function Men({ addToCart, addToWishList }) {
 						item={item}
 						key={item.id}
 						addToCart={addToCart}
-						addToWishList={addToWishList}
+						toggleWishList={toggleWishList}
 					/>
 				);
 			})}
