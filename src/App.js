@@ -10,13 +10,13 @@ export default function App() {
 	const [womenItems, setWomenItems] = useState([]);
 	const [wishlist, setWishlist] = useState([]);
 	const [cartItems, setCartItems] = useState([]);
-	const allItems = { menItems, womenItems, wishlist };
+	const allItems = { menItems, womenItems, wishlist, cartItems };
 	// fetch data on mount
 	useEffect(() => {
 		fetchMenItems();
 		fetchWomenItems();
 	}, []);
-
+	// update wishlist based on men and women items updates
 	useEffect(() => {
 		const menWishlist = menItems.filter((item) => item.inWishlist);
 		const womenWishlist = womenItems.filter((item) => item.inWishlist);
@@ -77,6 +77,25 @@ export default function App() {
 			setCartItems(updatedItems);
 		}
 	};
+	const incrementQuantity = (id) => {
+		let updatedItems = cartItems.map((item) => {
+			if (item.info.id === id) {
+				return { ...item, quantity: item.quantity + 1 };
+			}
+			return item;
+		});
+		setCartItems(updatedItems);
+	};
+
+	const decrementQuantity = (id) => {
+		let updatedItems = cartItems.map((item) => {
+			if (item.info.id === id) {
+				return { ...item, quantity: item.quantity - 1 };
+			}
+			return item;
+		});
+		setCartItems(updatedItems);
+	};
 
 	const fetchMenItems = async () => {
 		const data = await fetch(
@@ -101,11 +120,16 @@ export default function App() {
 	};
 
 	return (
-		<allItemsContext.Provider value={{ menItems, womenItems, wishlist }}>
+		<allItemsContext.Provider value={allItems}>
 			<div>
 				<h1>App</h1>
 				<Header />
-				<Main addToCart={addToCart} toggleWishlist={toggleWishlist} />
+				<Main
+					addToCart={addToCart}
+					toggleWishlist={toggleWishlist}
+					incrementQuantity={incrementQuantity}
+					decrementQuantity={decrementQuantity}
+				/>
 			</div>
 		</allItemsContext.Provider>
 	);

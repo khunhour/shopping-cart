@@ -1,7 +1,25 @@
 import React, { useContext } from "react";
-import { cartItemsContext } from "../../App";
+import { allItemsContext } from "../../App";
+import CartItems from "../CartItems";
 
-export default function Cart() {
-	// const cartItems = useContext(cartItemsContext).cartItems;
-	return <div>Cart page</div>;
+export default function Cart({ incrementQuantity, decrementQuantity }) {
+	const cartItems = useContext(allItemsContext).cartItems;
+	if (cartItems.length === 0) {
+		return <div>No Items In Your Cart!</div>;
+	} else {
+		return (
+			<div>
+				{cartItems.map((item) => {
+					return (
+						<CartItems
+							item={item}
+							key={item.id}
+							incrementQuantity={incrementQuantity}
+							decrementQuantity={decrementQuantity}
+						/>
+					);
+				})}
+			</div>
+		);
+	}
 }
