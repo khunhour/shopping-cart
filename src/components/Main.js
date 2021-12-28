@@ -10,6 +10,7 @@ export default function Main({
 	toggleWishlist,
 	incrementQuantity,
 	decrementQuantity,
+	removeFromCart,
 }) {
 	return (
 		<div>
@@ -18,6 +19,7 @@ export default function Main({
 			<Cart
 				incrementQuantity={incrementQuantity}
 				decrementQuantity={decrementQuantity}
+				removeFromCart={removeFromCart}
 			/>
 			<Wishlist addToCart={addToCart} toggleWishlist={toggleWishlist} />
 		</div>

@@ -4,7 +4,9 @@ export default function CartItems({
 	item,
 	incrementQuantity,
 	decrementQuantity,
+	removeFromCart,
 }) {
+	const id = item.info.id;
 	return (
 		<div>
 			<div>
@@ -13,17 +15,13 @@ export default function CartItems({
 					<div>{item.info.title}</div>
 					<div>
 						Quantity:
-						<button onClick={() => decrementQuantity(item.info.id)}>
-							-
-						</button>
+						<button onClick={() => decrementQuantity(id)}>-</button>
 						{item.quantity}
-						<button onClick={() => incrementQuantity(item.info.id)}>
-							+
-						</button>
+						<button onClick={() => incrementQuantity(id)}>+</button>
 					</div>
 					<div>Total: {item.info.price * item.quantity}$</div>
 				</div>
-				<button>Remove</button>
+				<button onClick={() => removeFromCart(id)}>Remove</button>
 			</div>
 		</div>
 	);

@@ -97,6 +97,11 @@ export default function App() {
 		setCartItems(updatedItems);
 	};
 
+	const removeFromCart = (id) => {
+		let updatedItems = cartItems.filter((item) => item.info.id !== id);
+		setCartItems(updatedItems);
+	};
+
 	const fetchMenItems = async () => {
 		const data = await fetch(
 			"https://fakestoreapi.com/products/category/men's%20clothing"
@@ -129,6 +134,7 @@ export default function App() {
 					toggleWishlist={toggleWishlist}
 					incrementQuantity={incrementQuantity}
 					decrementQuantity={decrementQuantity}
+					removeFromCart={removeFromCart}
 				/>
 			</div>
 		</allItemsContext.Provider>

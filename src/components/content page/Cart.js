@@ -2,7 +2,11 @@ import React, { useContext } from "react";
 import { allItemsContext } from "../../App";
 import CartItems from "../CartItems";
 
-export default function Cart({ incrementQuantity, decrementQuantity }) {
+export default function Cart({
+	incrementQuantity,
+	decrementQuantity,
+	removeFromCart,
+}) {
 	const cartItems = useContext(allItemsContext).cartItems;
 	if (cartItems.length === 0) {
 		return <div>No Items In Your Cart!</div>;
@@ -16,6 +20,7 @@ export default function Cart({ incrementQuantity, decrementQuantity }) {
 							key={item.id}
 							incrementQuantity={incrementQuantity}
 							decrementQuantity={decrementQuantity}
+							removeFromCart={removeFromCart}
 						/>
 					);
 				})}
