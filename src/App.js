@@ -127,8 +127,6 @@ export default function App() {
 	return (
 		<allItemsContext.Provider value={allItems}>
 			<div>
-				<h1>App</h1>
-				<Header />
 				<Main
 					addToCart={addToCart}
 					toggleWishlist={toggleWishlist}

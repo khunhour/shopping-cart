@@ -1,9 +1,11 @@
 import React from "react";
-
 import Cart from "./content page/Cart";
 import Men from "./content page/Men";
 import Wishlist from "./content page/Wishlist";
 import Women from "./content page/Women";
+import Home from "./content page/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./Header";
 
 export default function Main({
 	addToCart,
@@ -13,15 +15,69 @@ export default function Main({
 	removeFromCart,
 }) {
 	return (
-		<div>
-			<Men addToCart={addToCart} toggleWishlist={toggleWishlist} />
-			<Women addToCart={addToCart} toggleWishlist={toggleWishlist} />
-			<Cart
-				incrementQuantity={incrementQuantity}
-				decrementQuantity={decrementQuantity}
-				removeFromCart={removeFromCart}
-			/>
-			<Wishlist addToCart={addToCart} toggleWishlist={toggleWishlist} />
-		</div>
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<>
+								<Header />
+								<Home />
+							</>
+						}
+					/>
+					<Route
+						path="/men"
+						element={
+							<>
+								<Header />
+								<Men
+									addToCart={addToCart}
+									toggleWishlist={toggleWishlist}
+								/>
+							</>
+						}
+					/>
+					<Route
+						path="/women"
+						element={
+							<>
+								<Header />
+								<Women
+									addToCart={addToCart}
+									toggleWishlist={toggleWishlist}
+								/>
+							</>
+						}
+					/>
+					<Route
+						path="/checkout"
+						element={
+							<>
+								<Header />
+								<Cart
+									incrementQuantity={incrementQuantity}
+									decrementQuantity={decrementQuantity}
+									removeFromCart={removeFromCart}
+								/>
+							</>
+						}
+					/>
+					<Route
+						path="wishlist"
+						element={
+							<>
+								<Header />
+								<Wishlist
+									addToCart={addToCart}
+									toggleWishlist={toggleWishlist}
+								/>
+							</>
+						}
+					/>
+				</Routes>
+			</BrowserRouter>
+		</>
 	);
 }
