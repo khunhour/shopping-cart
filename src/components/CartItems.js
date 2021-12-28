@@ -7,6 +7,7 @@ export default function CartItems({
 	removeFromCart,
 }) {
 	const id = item.info.id;
+	const total = (item.info.price * item.quantity).toFixed(2);
 	return (
 		<div>
 			<div>
@@ -19,7 +20,7 @@ export default function CartItems({
 						{item.quantity}
 						<button onClick={() => incrementQuantity(id)}>+</button>
 					</div>
-					<div>Total: {item.info.price * item.quantity}$</div>
+					<div>Total:{total}$</div>
 				</div>
 				<button onClick={() => removeFromCart(id)}>Remove</button>
 			</div>
