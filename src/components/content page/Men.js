@@ -6,7 +6,7 @@ export default function Men({ addToCart, toggleWishlist }) {
 	const menItems = useContext(allItemsContext).menItems;
 	if (!menItems) return;
 	return (
-		<div>
+		<div className="card-container">
 			{menItems.map((item) => {
 				return (
 					<Card
