@@ -8,9 +8,13 @@ export default function Card({ item, addToCart, toggleWishlist }) {
 	);
 	return (
 		<div className="card">
-			<img src={item.image} alt="product" />
-			<div>{item.title}</div>
-			<div>{item.price}$</div>
+			<div>
+				<img src={item.image} alt="product" />
+			</div>
+			<div className="item-info">
+				<div>{item.title}</div>
+				<div>{item.price}$</div>
+			</div>
 			<div className="button-container">
 				<button
 					className="add-to-cart-btn"
