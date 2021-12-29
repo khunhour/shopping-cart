@@ -29,7 +29,7 @@ export default function CartItems({
 						+
 					</button>
 				</div>
-				<div>Total:{total}$</div>
+				<div>Total: {total}$</div>
 				<button onClick={() => removeFromCart(id)}>Remove</button>
 			</div>
 		</div>

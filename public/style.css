@@ -76,3 +76,10 @@ button {
 	background-color: white;
 	margin: 2rem;
 }
+.cart-items-total {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 1rem;
+}
