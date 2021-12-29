@@ -3,6 +3,9 @@
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: white;
+	height: 26rem;
+	width: 17rem;
+	border: solid 2px transparent;
 }
 .card-upper * {
 	padding: 1rem;
@@ -46,4 +49,8 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.card:hover {
+	border: solid 2px black;
 }
