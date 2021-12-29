@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { allItemsContext } from "../../App";
-import CartItems from "../CartItems";
+import CartItems from "../Cart Items/CartItems";
 
 export default function Cart({
 	incrementQuantity,
@@ -13,7 +13,7 @@ export default function Cart({
 		cart = <h4>Your Cart is Empty.</h4>;
 	} else {
 		cart = (
-			<div>
+			<div className="cart-items-container">
 				{cartItems.map((item) => {
 					return (
 						<CartItems

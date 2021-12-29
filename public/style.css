@@ -57,9 +57,22 @@ main h2,
 main h4 {
 	color: white;
 }
+button {
+	font-family: "Inconsolata", monospace;
+	font-size: 1rem;
+	border: none;
+	text-align: center;
+	vertical-align: bottom;
+	border-radius: 50px;
+	padding: 0.5rem 1rem;
+}
 .card-container {
 	display: grid;
 	grid-template-columns: 2fr 2fr;
 	gap: 2rem;
+	margin: 2rem;
+}
+.cart-items-container {
+	background-color: white;
 	margin: 2rem;
 }
