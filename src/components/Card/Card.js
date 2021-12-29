@@ -4,9 +4,9 @@ import "./Card.css";
 
 export default function Card({ item, addToCart, toggleWishlist }) {
 	const icon = item.inWishlist ? (
-		<MdFavorite color="red" fontSize="1.8em" />
+		<MdFavorite color="red" fontSize="1em" />
 	) : (
-		<MdFavoriteBorder fontSize="1.8em" />
+		<MdFavoriteBorder fontSize="1em" />
 	);
 	return (
 		<div className="card">

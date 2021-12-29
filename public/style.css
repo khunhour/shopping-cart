@@ -36,14 +36,15 @@ header {
 	text-decoration: none;
 }
 .lower-nav {
-	/* background-color: black;
-	color: white; */
+	background-color: #570101;
+	color: white;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	text-align: center;
 }
 .lower-nav * {
-	color: #943434;
+	color: white;
+	padding: 0.4rem;
 	text-decoration: none;
 }
 main {
