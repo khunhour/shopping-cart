@@ -12,19 +12,21 @@ export default function Cart({
 		return <div>No Items In Your Cart!</div>;
 	} else {
 		return (
-			<div>
-				{cartItems.map((item) => {
-					return (
-						<CartItems
-							item={item}
-							key={item.id}
-							incrementQuantity={incrementQuantity}
-							decrementQuantity={decrementQuantity}
-							removeFromCart={removeFromCart}
-						/>
-					);
-				})}
-			</div>
+			<main>
+				<div>
+					{cartItems.map((item) => {
+						return (
+							<CartItems
+								item={item}
+								key={item.id}
+								incrementQuantity={incrementQuantity}
+								decrementQuantity={decrementQuantity}
+								removeFromCart={removeFromCart}
+							/>
+						);
+					})}
+				</div>
+			</main>
 		);
 	}
 }

@@ -1,13 +1,25 @@
 :root {
-	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-		"Lucida Sans", Arial, sans-serif;
+	font-family: "Inconsolata", monospace;
 }
-
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #943434;
+}
 header {
 	display: flex;
 	flex-direction: column;
+	background-color: white;
+}
+.upper-nav h3 {
+	font-family: "Bodoni Moda", serif;
+	font-weight: bold;
 }
 .upper-nav {
+	color: #943434;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -16,7 +28,9 @@ header {
 	margin-right: 1rem;
 }
 .upper-nav-links * {
+	color: #943434;
 	margin: 1.5rem;
+	text-decoration: none;
 }
 .lower-nav {
 	/* background-color: black;
@@ -25,47 +39,18 @@ header {
 	grid-template-columns: 1fr 1fr;
 	text-align: center;
 }
-
+.lower-nav * {
+	color: #943434;
+	text-decoration: none;
+}
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .card-container {
 	display: grid;
 	grid-template-columns: 2fr 2fr;
 	gap: 2rem;
-}
-.card {
-	border: black 2px solid;
-	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-.item-info {
-	padding: 1rem;
-	border-top: solid 1px black;
-}
-.button-container {
-	margin-bottom: 1rem;
-	display: flex;
-	gap: 0.5rem;
-}
-button {
-	padding: 0.5rem;
-	border: none;
-	text-align: center;
-	vertical-align: bottom;
-}
-.add-to-cart-btn {
-	/* background-color: mediumturquoise; */
-	border-radius: 50px;
-	padding: 0.5rem 1rem;
-}
-.toggle-wishlist-btn {
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-img {
-	height: 150px;
-	width: 150px;
+	margin: 2rem;
 }

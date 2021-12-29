@@ -1,0 +1,49 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: white;
+}
+.card-upper * {
+	padding: 1rem;
+}
+.card-image {
+	text-align: center;
+	padding-top: 1rem;
+	padding-bottom: 2rem;
+	border-bottom: solid 1px black;
+}
+.card-image img {
+	width: 150px;
+	height: 170px;
+}
+.card-info {
+	padding: 1rem;
+	border-top: solid 1px black;
+}
+.card-lower {
+	padding: 1rem;
+}
+.card-button-container {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+button {
+	padding: 0.5rem;
+	border: none;
+	text-align: center;
+	vertical-align: bottom;
+}
+.card-add-to-cart-btn {
+	/* background-color: mediumturquoise; */
+	border-radius: 50px;
+	padding: 0.5rem 1rem;
+	flex: 1;
+}
+.card-toggle-wishlist-btn {
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

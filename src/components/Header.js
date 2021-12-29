@@ -5,7 +5,7 @@ export default function Header() {
 	return (
 		<header>
 			<div className="upper-nav">
-				<h3>Effiel</h3>
+				<h3>{"dev : store"}</h3>
 				<div className="upper-nav-links">
 					<Link to="/">Home</Link>
 					<Link to="/wishlist">WishList</Link>

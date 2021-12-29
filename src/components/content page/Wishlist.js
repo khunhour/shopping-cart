@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { allItemsContext } from "../../App";
-import Card from "../Card";
+import Card from "../Card/Card";
 
 export default function Wishlist({ addToCart, toggleWishlist }) {
 	const wishlistItems = useContext(allItemsContext).wishlist;
@@ -8,18 +8,20 @@ export default function Wishlist({ addToCart, toggleWishlist }) {
 		return <div>No Items In Your wishlist</div>;
 	} else {
 		return (
-			<div>
-				{wishlistItems.map((item) => {
-					return (
-						<Card
-							item={item}
-							key={item.id}
-							addToCart={addToCart}
-							toggleWishlist={toggleWishlist}
-						/>
-					);
-				})}
-			</div>
+			<main>
+				<div>
+					{wishlistItems.map((item) => {
+						return (
+							<Card
+								item={item}
+								key={item.id}
+								addToCart={addToCart}
+								toggleWishlist={toggleWishlist}
+							/>
+						);
+					})}
+				</div>
+			</main>
 		);
 	}
 }
