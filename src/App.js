@@ -90,7 +90,11 @@ export default function App() {
 	const decrementQuantity = (id) => {
 		let updatedItems = cartItems.map((item) => {
 			if (item.info.id === id) {
-				return { ...item, quantity: item.quantity - 1 };
+				if (item.quantity === 0) {
+					return item;
+				} else {
+					return { ...item, quantity: item.quantity - 1 };
+				}
 			}
 			return item;
 		});
