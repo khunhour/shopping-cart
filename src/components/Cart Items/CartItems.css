@@ -1,6 +1,7 @@
 .cart-items {
 	display: flex;
 	padding: 1rem;
+	border-bottom: solid 1px black;
 }
 .cart-items img {
 	width: 9rem;
