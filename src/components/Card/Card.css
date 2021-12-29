@@ -3,8 +3,8 @@
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: white;
-	height: 26rem;
 	width: 17rem;
+	height: 24rem;
 	border: solid 2px transparent;
 }
 .card-upper * {
@@ -13,19 +13,15 @@
 .card-image {
 	text-align: center;
 	padding-top: 1rem;
-	padding-bottom: 2rem;
+	padding-bottom: 1rem;
 	border-bottom: solid 1px black;
 }
 .card-image img {
 	width: 150px;
 	height: 170px;
 }
-.card-info {
-	padding: 1rem;
-	border-top: solid 1px black;
-}
 .card-lower {
-	padding: 1rem;
+	padding: 0rem 1rem 1rem 1rem;
 }
 .card-button-container {
 	display: flex;

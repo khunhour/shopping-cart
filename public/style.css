@@ -28,11 +28,14 @@ header {
 	align-items: center;
 }
 .upper-nav-links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin-right: 1rem;
 }
 .upper-nav-links * {
 	color: #943434;
-	margin: 1.5rem;
+	margin-left: 1rem;
 	text-decoration: none;
 }
 .lower-nav {
@@ -46,6 +49,15 @@ header {
 	color: white;
 	padding: 0.4rem;
 	text-decoration: none;
+}
+a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2px;
+}
+a:hover {
+	text-decoration: underline;
 }
 main {
 	display: flex;
