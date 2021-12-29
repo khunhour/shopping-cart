@@ -7,6 +7,7 @@ export default function Men({ addToCart, toggleWishlist }) {
 	if (!menItems) return;
 	return (
 		<main>
+			<h2>Men</h2>
 			<div className="card-container">
 				{menItems.map((item) => {
 					return (

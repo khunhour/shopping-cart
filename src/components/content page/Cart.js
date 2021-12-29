@@ -8,25 +8,30 @@ export default function Cart({
 	removeFromCart,
 }) {
 	const cartItems = useContext(allItemsContext).cartItems;
+	let cart;
 	if (cartItems.length === 0) {
-		return <div>No Items In Your Cart!</div>;
+		cart = <h4>Your Cart is Empty.</h4>;
 	} else {
-		return (
-			<main>
-				<div>
-					{cartItems.map((item) => {
-						return (
-							<CartItems
-								item={item}
-								key={item.id}
-								incrementQuantity={incrementQuantity}
-								decrementQuantity={decrementQuantity}
-								removeFromCart={removeFromCart}
-							/>
-						);
-					})}
-				</div>
-			</main>
+		cart = (
+			<div>
+				{cartItems.map((item) => {
+					return (
+						<CartItems
+							item={item}
+							key={item.id}
+							incrementQuantity={incrementQuantity}
+							decrementQuantity={decrementQuantity}
+							removeFromCart={removeFromCart}
+						/>
+					);
+				})}
+			</div>
 		);
 	}
+	return (
+		<main>
+			<h2>Check Out</h2>
+			{cart}
+		</main>
+	);
 }

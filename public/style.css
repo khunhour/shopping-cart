@@ -49,8 +49,13 @@ header {
 }
 main {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+main h2,
+main h4 {
+	color: white;
 }
 .card-container {
 	display: grid;
