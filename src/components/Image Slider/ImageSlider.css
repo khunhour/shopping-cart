@@ -4,17 +4,30 @@
 	align-items: center;
 	justify-content: center;
 	margin: 2rem;
+	margin-bottom: 4rem;
 }
 .slider-image {
 	max-height: 500px;
 	max-width: 90vw;
 	border-radius: 10px;
 }
+
 .slider-text {
 	position: absolute;
 	width: 500px;
 	text-align: center;
 }
+
+.slider-btn {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.slider-btn button:hover {
+	cursor: pointer !important;
+}
+
 .right-arrow {
 	position: absolute;
 	top: 50%;

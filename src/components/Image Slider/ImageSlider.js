@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SliderData } from "./SliderData";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import "./ImageSlider.css";
+import { Link } from "react-router-dom";
 export default function ImageSlider() {
 	const [current, setCurrent] = useState(0);
 	const length = SliderData.length;
@@ -11,6 +12,17 @@ export default function ImageSlider() {
 	const prevSlide = () => {
 		setCurrent(current === 0 ? length - 1 : current - 1);
 	};
+
+	const shopBtn = (
+		<>
+			<Link to="/men">
+				<button>Shop Men</button>
+			</Link>
+			<Link to="/women">
+				<button>Shop Women</button>
+			</Link>
+		</>
+	);
 
 	if (!Array.isArray(SliderData) || SliderData.length <= 0) {
 		return null;
@@ -31,7 +43,12 @@ export default function ImageSlider() {
 									alt="fashion"
 									className="slider-image"
 								/>
-								<h2 className="slider-text">{data.text}</h2>
+								<div className="slider-text">
+									<h2>{data.text}</h2>
+									<div className="slider-btn">
+										{index === length - 1 && shopBtn}
+									</div>
+								</div>
 							</>
 						)}
 					</div>
