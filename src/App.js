@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CartItems from "./components/Cart Items/CartItems";
-import Header from "./components/Header";
 import Main from "./components/Main";
 
 export const allItemsContext = React.createContext(null);
@@ -43,21 +41,6 @@ export default function App() {
 			});
 			setWomenItems(updatedItems);
 		}
-
-		// const allItemsArray = menItems.concat(womenItems);
-		// const currentWishlist = allItemsArray.filter((item) => item.inWishlist);
-		// setWishList(currentWishlist);
-		// const existingItem = wishList.filter((item) => item.id === id);
-		// // update inWishlist
-
-		// const targetItem = updatedItems.filter((item) => item.id === id)[0];
-		// if (existingItem.length === 0) {
-		// 	setWishList((prevState) => [...prevState, targetItem]);
-		// 	// setWishList([...updatedItems, targetItem]);
-		// } else {
-		// 	let updatedItems = wishList.filter((item) => item.id !== id);
-		// 	setWishList(updatedItems);
-		// }
 	};
 
 	const addToCart = (id) => {
