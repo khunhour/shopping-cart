@@ -44,7 +44,7 @@ export default function ImageSlider() {
 									className="slider-image"
 								/>
 								<div className="slider-text">
-									<h2>{data.text}</h2>
+									<p>{data.text}</p>
 									<div className="slider-btn">
 										{index === length - 1 && shopBtn}
 									</div>

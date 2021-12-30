@@ -6,6 +6,7 @@
 	width: 17rem;
 	height: 24rem;
 	border: solid 2px transparent;
+	border-radius: 10px;
 }
 .card-upper * {
 	padding: 1rem;
@@ -17,8 +18,8 @@
 	border-bottom: solid 1px black;
 }
 .card-image img {
-	width: 150px;
-	height: 170px;
+	width: 7.8rem;
+	height: 8.9rem;
 }
 .card-lower {
 	padding: 0rem 1rem 1rem 1rem;
@@ -43,4 +44,34 @@
 
 .card:hover {
 	border: solid 2px black;
+}
+
+@media (max-width: 750px) {
+	.card {
+		width: 15rem;
+		height: 22rem;
+	}
+	.card-image {
+		padding: 0;
+	}
+	.card-image img {
+		width: 7rem;
+		height: 8rem;
+	}
+}
+@media (max-width: 500px) {
+	.card {
+		width: 11rem;
+		height: 17rem;
+	}
+	.card-image img {
+		width: 4rem;
+		height: 5rem;
+	}
+	.card-upper * {
+		padding: 0.5rem;
+	}
+	.card-lower {
+		padding: 0rem 0.5rem 0.5rem 0.5rem;
+	}
 }

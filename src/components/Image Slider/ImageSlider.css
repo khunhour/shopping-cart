@@ -13,11 +13,16 @@
 }
 
 .slider-text {
+	font-weight: bold;
+	font-size: 1.5rem;
 	position: absolute;
-	width: 500px;
+	width: 26rem;
 	text-align: center;
+	padding: 3rem;
 }
-
+.slider-text p {
+	margin: 2rem;
+}
 .slider-btn {
 	display: flex;
 	justify-content: center;
@@ -31,8 +36,8 @@
 .right-arrow {
 	position: absolute;
 	top: 50%;
-	right: 20px;
-	font-size: 3rem;
+	right: 0.7rem;
+	font-size: 2rem;
 	color: white;
 	cursor: pointer;
 	z-index: 10;
@@ -41,8 +46,8 @@
 .left-arrow {
 	position: absolute;
 	top: 50%;
-	left: 20px;
-	font-size: 3rem;
+	left: 0.7rem;
+	font-size: 2rem;
 	color: white;
 	cursor: pointer;
 	z-index: 10;
@@ -61,4 +66,18 @@
 	opacity: 1;
 	transition: all 1s ease;
 	transform: scale(1.03);
+}
+
+@media (max-width: 500px) {
+	.slider-text {
+		font-weight: bold;
+		font-size: 1.2rem;
+		width: 26rem;
+		padding: 3rem;
+	}
+	.slider-text p {
+		margin: 2rem;
+		margin-left: 3rem;
+		margin-right: 3rem;
+	}
 }
