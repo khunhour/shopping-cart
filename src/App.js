@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CartItems from "./components/Cart Items/CartItems";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
@@ -88,7 +89,7 @@ export default function App() {
 	};
 
 	const decrementQuantity = (id) => {
-		let updatedItems = cartItems.map((item) => {
+		const updatedItems = cartItems.map((item) => {
 			if (item.info.id === id) {
 				if (item.quantity === 0) {
 					return item;
@@ -98,7 +99,8 @@ export default function App() {
 			}
 			return item;
 		});
-		setCartItems(updatedItems);
+		const filteredItems = updatedItems.filter((item) => item.quantity > 0);
+		setCartItems(filteredItems);
 	};
 
 	const removeFromCart = (id) => {
