@@ -27,10 +27,13 @@
 	display: flex;
 	justify-content: center;
 	gap: 1rem;
+	text-decoration-color: black;
 }
-
+.slider-btn a {
+	text-decoration-color: black;
+}
 .slider-btn button:hover {
-	cursor: pointer !important;
+	cursor: pointer;
 }
 
 .right-arrow {
