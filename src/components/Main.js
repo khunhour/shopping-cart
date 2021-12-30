@@ -14,9 +14,10 @@ export default function Main({
 	decrementQuantity,
 	removeFromCart,
 }) {
+	console.log("main");
 	return (
 		<>
-			<BrowserRouter>
+			<BrowserRouter basename="/shopping-cart/">
 				<Routes>
 					<Route
 						path="/"
