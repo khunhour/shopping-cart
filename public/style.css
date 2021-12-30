@@ -106,7 +106,7 @@ button {
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
 	:root {
 		font-size: 15px;
 	}
