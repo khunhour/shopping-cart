@@ -47,5 +47,5 @@ function getTotal(items) {
 	const total = items.reduce((sum, item) => {
 		return (sum += item.quantity * item.info.price);
 	}, 0);
-	return total;
+	return total.toFixed(2);
 }
