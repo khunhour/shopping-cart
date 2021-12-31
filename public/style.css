@@ -127,4 +127,7 @@ button:active {
 		flex-direction: column;
 		gap: 1rem;
 	}
+	.logo {
+		margin: 0;
+	}
 }
