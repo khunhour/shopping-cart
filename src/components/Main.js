@@ -13,6 +13,7 @@ export default function Main({
 	incrementQuantity,
 	decrementQuantity,
 	removeFromCart,
+	clearCart,
 }) {
 	console.log("main");
 	return (
@@ -61,6 +62,7 @@ export default function Main({
 									incrementQuantity={incrementQuantity}
 									decrementQuantity={decrementQuantity}
 									removeFromCart={removeFromCart}
+									clearCart={clearCart}
 								/>
 							</>
 						}

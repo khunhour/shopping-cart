@@ -6,6 +6,7 @@ export default function Cart({
 	incrementQuantity,
 	decrementQuantity,
 	removeFromCart,
+	clearCart,
 }) {
 	const cartItems = useContext(allItemsContext).cartItems;
 
@@ -29,7 +30,7 @@ export default function Cart({
 				})}
 				<div className="cart-items-total">
 					<div>Total: {totalPrice}$</div>
-					<button onClick={alertCheckout}>Proceed to Checkout</button>
+					<button onClick={clearCart}>Proceed to Checkout</button>
 				</div>
 			</div>
 		);
@@ -47,8 +48,4 @@ function getTotal(items) {
 		return (sum += item.quantity * item.info.price);
 	}, 0);
 	return total;
-}
-
-function alertCheckout() {
-	alert("Thank you for shopping at dev:store. Happy Coding!");
 }

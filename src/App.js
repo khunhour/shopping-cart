@@ -61,6 +61,12 @@ export default function App() {
 			setCartItems(updatedItems);
 		}
 	};
+
+	const clearCart = () => {
+		alert("Thank you for shopping at dev:store. Happy Coding!");
+		setCartItems([]);
+	};
+
 	const incrementQuantity = (id) => {
 		let updatedItems = cartItems.map((item) => {
 			if (item.info.id === id) {
@@ -122,6 +128,7 @@ export default function App() {
 					incrementQuantity={incrementQuantity}
 					decrementQuantity={decrementQuantity}
 					removeFromCart={removeFromCart}
+					clearCart={clearCart}
 				/>
 			</div>
 		</allItemsContext.Provider>
