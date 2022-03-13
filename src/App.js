@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { MdOutlineDateRange } from "react-icons/md";
 import Main from "./components/Main";
 
 export const allItemsContext = React.createContext(null);
@@ -15,6 +16,7 @@ export default function App() {
 		fetchMenItems();
 		fetchWomenItems();
 	}, []);
+
 	// update wishlist based on men and women items updates
 	useEffect(() => {
 		const menWishlist = menItems.filter((item) => item.inWishlist);
@@ -117,6 +119,38 @@ export default function App() {
 			return { ...item, inWishlist: false };
 		});
 		setWomenItems(updatedData);
+	};
+
+	const fetchItems = async () => {
+		const womenData = await fetch(
+			"https://fakestoreapi.com/products/category/women's%20clothing"
+		);
+		const menData = await fetch(
+			"https://fakestoreapi.com/products/category/men's%20clothing"
+		);
+		const jsonWomenData = await womenData.json();
+		const jsonMenData = await menData.json();
+		const formattedMenData = jsonMenData.map((item) => {
+			return {
+				...item,
+				inWishlist: false,
+				cart: {
+					inCart: false,
+					quantity: 0,
+				},
+			};
+		});
+		const formattedWomenData = jsonWomenData.map((item) => {
+			return {
+				...item,
+				inWishlist: false,
+				cart: {
+					inCart: false,
+					quantity: 0,
+				},
+			};
+		});
+		const allItems = formattedMenData.concat(formattedWomenData);
 	};
 
 	return (
