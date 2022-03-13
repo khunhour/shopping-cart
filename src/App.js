@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineDateRange } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import Main from "./components/Main";
 
 export const allItemsContext = React.createContext(null);
@@ -11,11 +12,18 @@ export default function App() {
 	const [wishlist, setWishlist] = useState([]);
 	const [cartItems, setCartItems] = useState([]);
 	const allItems = { menItems, womenItems, wishlist, cartItems };
+
 	// fetch data on mount
 	useEffect(() => {
 		fetchMenItems();
 		fetchWomenItems();
 	}, []);
+
+	//add items to redux store on mount
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchItems());
+	}, [dispatch]);
 
 	// update wishlist based on men and women items updates
 	useEffect(() => {
@@ -151,6 +159,7 @@ export default function App() {
 			};
 		});
 		const allItems = formattedMenData.concat(formattedWomenData);
+		return allItems;
 	};
 
 	return (
